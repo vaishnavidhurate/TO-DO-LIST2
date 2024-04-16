@@ -1,0 +1,38 @@
+import random
+import time
+def intro():
+print("May I ask you for your name?")
+name = input() # Asks for the player's name
+print(name + ", we are going to play a game. I am thinking of a number betwe
+time.sleep(0.5)
+print("Go ahead. Guess!")
+def pick():
+number = random.randint(1, 200) # Pick a new random number for each game
+guesses_taken = 0
+while guesses_taken < 6: # Limiting guesses to 6
+time.sleep(0.25)
+guess = input("Guess: ")
+try:
+guess = int(guess)
+if 1 <= guess <= 200:
+guesses_taken += 1
+if guess < number:
+print("Too low")
+elif guess > number:
+print("Too high")
+else:
+print("Congratulations! You've guessed the number!")
+break
+if guesses_taken < 6:
+print("Try Again!")
+else:
+print("Please enter a number between 1 and 200")
+except ValueError:
+print("Please enter a valid number.")
+if guess != number:
+print("Sorry, you've run out of guesses. The number I was thinking of wa
+play_again = "yes"
+while play_again.lower() in ["yes", "y"]:
+intro()
+pick()
+play_again = input("Do you want to play again? (yes/no): ")
